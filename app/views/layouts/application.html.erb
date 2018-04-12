@@ -8,8 +8,16 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/notices' %>
 
-    <div class="container">
+    <div class="container" data-behavior="vue">
       <%= yield %>
+
+      <app inline-template :message="<%= "GORAILS".to_json %>">
+        <h1>{{message}}</h1>
+      </app>
+
+      <% 1.upto(10).each do |i| %>
+        <app :message="<%= i.to_json %>"></app>
+      <% end %>
     </div>
 
     <%= render 'shared/footer' %>
